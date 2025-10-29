@@ -1,0 +1,11 @@
+:root{ font-family: system-ui, Arial, sans-serif; padding: 12px }
+.container{ max-width:720px; margin:0 auto }
+.todo-input{ display:flex; gap:8px; margin-bottom:12px }
+.todo-input input{ flex:1; padding:8px }
+.todo-input button{ padding:8px 12px }
+.todo-list{ list-style:none; padding:0; margin:0 }
+.todo-item{ display:flex; align-items:center; justify-content:space-between; padding:8px 0; border-bottom:1px solid #eee }
+.todo-item label{ display:flex; gap:8px; align-items:center; flex:1 }
+.todo-item .actions button{ margin-left:8px }
+.done{ text-decoration:line-through; opacity:0.7 }
+.error{ color:darkred; margin-top:8px }
