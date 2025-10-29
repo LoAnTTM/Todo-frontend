@@ -41,17 +41,18 @@ const Home: React.FC = () => {
       <h1>Todo List ({remainingTasks} tasks remaining)</h1>
       
       {/* 1. Todo Input */}
-      <TodoInput onAdd={addTodo} apiError={null} /> 
+      <TodoInput onAdd={addTodo}/> 
       
       {/* 2. Danh sách Todos */}
       <ul style={{ listStyle: 'none', padding: 0 }}>
         {todos.map(todo => (
           <TodoItem 
-            key={todo.id} 
-            todo={todo} 
-            onToggle={toggleTodo}
-            onDelete={deleteTodo}
-          />
+            key={todo.id}
+            todo={todo}
+            onToggle={(t: Todo) => { toggleTodo(t.id, t.done); } }
+            onDelete={(t: Todo) => { deleteTodo(t.id); } } onEdit={function (t: Todo, title: string): void {
+              throw new Error('Function not implemented.');
+            } }          />
         ))}
         {todos.length === 0 && <p style={{ color: '#666' }}>Không có công việc nào. Hãy thêm một công việc mới!</p>}
       </ul>
