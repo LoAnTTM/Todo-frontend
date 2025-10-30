@@ -1,11 +1,156 @@
-:root{ font-family: system-ui, Arial, sans-serif; padding: 12px }
-.container{ max-width:720px; margin:0 auto }
-.todo-input{ display:flex; gap:8px; margin-bottom:12px }
-.todo-input input{ flex:1; padding:8px }
-.todo-input button{ padding:8px 12px }
-.todo-list{ list-style:none; padding:0; margin:0 }
-.todo-item{ display:flex; align-items:center; justify-content:space-between; padding:8px 0; border-bottom:1px solid #eee }
-.todo-item label{ display:flex; gap:8px; align-items:center; flex:1 }
-.todo-item .actions button{ margin-left:8px }
-.done{ text-decoration:line-through; opacity:0.7 }
-.error{ color:darkred; margin-top:8px }
+/* --- Biến màu toàn cục để dễ dàng thay đổi --- */
+:root {
+  --primary-color: #007bff; /* Màu xanh dương thân thiện */
+  --danger-color: #dc3545;  /* Màu đỏ cho nút xóa */
+  --secondary-color: #6c757d; /* Màu xám cho nút sửa */
+  --bg-light: #f8f9fa;      /* Màu nền nhẹ cho body */
+  --border-color: #dee2e6;
+  --text-color: #333;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* --- Thiết lập cơ bản cho trang --- */
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  background-color: var(--bg-light); /* Nền xám nhạt */
+  color: var(--text-color);
+  margin: 0;
+  padding: 24px; /* Thêm khoảng đệm cho body */
+}
+
+/* --- Tiêu đề ứng dụng --- */
+h1 {
+  text-align: center;
+  color: #222;
+  margin-top: 0;
+  margin-bottom: 24px;
+}
+
+/* --- Khung chính chứa ứng dụng --- */
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  background-color: #ffffff; /* Nền trắng cho nội dung */
+  padding: 24px;
+  border-radius: 12px; /* Bo góc mềm mại */
+  box-shadow: var(--shadow); /* Đổ bóng tạo chiều sâu */
+}
+
+/* --- Khu vực nhập liệu --- */
+.todo-input {
+  display: flex;
+  gap: 10px; /* Tăng khoảng cách */
+  margin-bottom: 20px; /* Tăng khoảng cách */
+}
+
+.todo-input input {
+  flex: 1;
+  padding: 12px 15px; /* Tăng padding */
+  font-size: 16px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px; /* Bo góc */
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* Hiệu ứng khi focus vào input */
+.todo-input input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+}
+
+/* --- Kiểu nút bấm chung --- */
+button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px; /* Bo góc */
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: background-color 0.2s, opacity 0.2s;
+}
+
+/* Nút "Add" chính */
+.todo-input button {
+  padding: 12px 20px;
+  background-color: var(--primary-color);
+  color: white;
+  font-size: 16px;
+}
+
+.todo-input button:hover {
+  opacity: 0.85;
+}
+
+/* --- Danh sách Todo --- */
+.todo-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 4px; /* Thêm chút padding và căn lề */
+  border-bottom: 1px solid #eee;
+}
+
+/* Bỏ đường viền của item cuối cùng */
+.todo-item:last-child {
+  border-bottom: none;
+}
+
+.todo-item label {
+  display: flex;
+  gap: 12px; /* Tăng khoảng cách checkbox và text */
+  align-items: center;
+  flex: 1;
+  font-size: 17px; /* Chữ to rõ hơn */
+}
+
+.todo-item input[type="checkbox"] {
+  width: 18px; /* Checkbox to hơn */
+  height: 18px;
+  cursor: pointer;
+}
+
+/* Khu vực các nút hành động (Edit, Delete) */
+.todo-item .actions {
+  display: flex;
+  gap: 8px; /* Dùng gap thay cho margin-left */
+}
+
+/* Nút Sửa (Edit) */
+.todo-item .btn-edit {
+  background-color: var(--secondary-color);
+  color: white;
+}
+.todo-item .btn-edit:hover {
+  background-color: #5a6268;
+}
+
+/* Nút Xóa (Delete) */
+.todo-item .btn-delete {
+  background-color: var(--danger-color);
+  color: white;
+}
+.todo-item .btn-delete:hover {
+  background-color: #c82333;
+}
+
+/* --- Các lớp tiện ích --- */
+/* Khi todo đã hoàn thành */
+.done label {
+  text-decoration: line-through;
+  color: var(--secondary-color); /* Chữ màu xám */
+  opacity: 0.8;
+}
+
+/* Tin nhắn lỗi */
+.error {
+  color: var(--danger-color); /* Dùng biến màu */
+  margin-top: 8px;
+  font-weight: 500;
+}
