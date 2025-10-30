@@ -19,7 +19,7 @@ export default function App() {
     onEdit
   } = useTodos() // <-- Lỗi TS2305 sẽ hết khi dòng import ở trên đúng
 
-  // Phần JSX (render)
+  // Phần JSX (render)khoadeptrai
   return (
     <div className="container">
       <h1>Todo App</h1>
